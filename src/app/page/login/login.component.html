@@ -1,0 +1,55 @@
+<div class="login">
+  <mat-card class="login--card">
+    <div class="login--card--img">
+      <img
+        mat-card-image
+        width="130"
+        src="assets/images/logo.png"
+        alt="Photo of a Shiba Inu"
+      />
+    </div>
+
+    <h1>Bienvenido/a</h1>
+    <p>Introduce tus credenciales para acceder</p>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="login--form">
+      <mat-form-field appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input
+          matInput
+          id="email"
+          placeholder="example@example.com"
+          formControlName="email"
+          required
+        />
+        <mat-error *ngIf="loginForm" id="emailError">{{
+          getEmailErrorMessage(loginForm.get("email"))
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          id="password"
+          type="password"
+          formControlName="password"
+          required
+        />
+        <mat-error *ngIf="loginForm">{{
+          getPasswordErrorMessage(loginForm.get("password"))
+        }}</mat-error>
+      </mat-form-field>
+      <button
+        mat-flat-button
+        id="buttonSubmit"
+        color="primary"
+        [disabled]="loginForm.invalid"
+      >
+        Acceder
+      </button>
+    </form>
+
+    <span class="error" id=>{{ getLoginError() }}</span>
+  </mat-card>
+</div>

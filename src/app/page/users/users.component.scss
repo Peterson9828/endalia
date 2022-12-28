@@ -1,0 +1,33 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  padding: 25px;
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.user {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+
+  &--card {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    &--info p,
+    h3 {
+      margin: 0;
+    }
+  }
+
+  &--avatar {
+    margin-right: 15px;
+    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+    background-size: cover;
+  }
+}

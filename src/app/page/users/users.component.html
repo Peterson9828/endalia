@@ -1,0 +1,38 @@
+<mat-toolbar class="toolbar" color="primary">
+  <span>Endalia HR</span>
+  <mat-icon
+    fontIcon="exit_to_app"
+    class="pointer"
+    (click)="logout()"
+  ></mat-icon>
+</mat-toolbar>
+
+<div class="container">
+  <h1>Directorio de empleados</h1>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar... </mat-label>
+    <input matInput type="text" [(ngModel)]="textFilter" (keyup)="getUsers()" />
+    <button
+      *ngIf="textFilter"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="clear()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="user">
+    <mat-card *ngFor="let user of userService.users" class="user--card">
+      <div mat-card-avatar class="user--avatar"></div>
+      <div class="user--card--info">
+        <h3>{{ user.lastName | uppercase }}, {{ user.name }}</h3>
+        <p>{{ user.job }}</p>
+        <p>{{ user.phone }}</p>
+        <p>{{ user.email }}</p>
+      </div>
+    </mat-card>
+  </div>
+</div>
